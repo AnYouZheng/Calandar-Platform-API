@@ -9,7 +9,7 @@ password = ''
 database = ''
 
 class DB_connect:
-    SQLALCHEMY_DATABASE_URL = f'mysql+pymysql://user:paeeword@host/database' 
+    SQLALCHEMY_DATABASE_URL = f'mysql+pymysql://user:password@host/database' 
     #定義DB 位址
     engine = create_engine(SQLALCHEMY_DATABASE_URL)
     #創建SQLalchmy引擎並連接
