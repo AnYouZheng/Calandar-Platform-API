@@ -9,7 +9,7 @@ password = 'aa690826'
 database = 'cbb110111_Calandar_Platform'
 
 class DB_connect:
-    SQLALCHEMY_DATABASE_URL = "sqlite:///./sql_app.db" 
+    SQLALCHEMY_DATABASE_URL = f'' 
     #定義DB 位址
     engine = create_engine(SQLALCHEMY_DATABASE_URL)
     #創建SQLalchmy引擎並連接
