@@ -3,13 +3,13 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
 #SQL詳細資料
-host = 'web.csie2.nptu.edu.tw'
-user = 'cbb110111'
-password = 'aa690826'
-database = 'cbb110111_Calandar_Platform'
+host = ''
+user = ''
+password = ''
+database = ''
 
 class DB_connect:
-    SQLALCHEMY_DATABASE_URL = f'' 
+    SQLALCHEMY_DATABASE_URL = f'mysql+pymysql://user:paeeword@host/database' 
     #定義DB 位址
     engine = create_engine(SQLALCHEMY_DATABASE_URL)
     #創建SQLalchmy引擎並連接
