@@ -1,5 +1,8 @@
-# Created by https://www.toptal.com/developers/gitignore/api/visualstudiocode,git,python
-# Edit at https://www.toptal.com/developers/gitignore?templates=visualstudiocode,git,python
+# Created by https://www.toptal.com/developers/gitignore/api/visualstudiocode,git,python,dotenv
+# Edit at https://www.toptal.com/developers/gitignore?templates=visualstudiocode,git,python,dotenv
+
+### dotenv ###
+.env
 
 ### Git ###
 # Created by git for backups. To disable backups in Git:
@@ -139,7 +142,6 @@ celerybeat.pid
 *.sage.py
 
 # Environments
-.env
 .venv
 env/
 venv/
@@ -207,4 +209,4 @@ pyrightconfig.json
 .history
 .ionide
 
-# End of https://www.toptal.com/developers/gitignore/api/visualstudiocode,git,python
+# End of https://www.toptal.com/developers/gitignore/api/visualstudiocode,git,python,dotenv
