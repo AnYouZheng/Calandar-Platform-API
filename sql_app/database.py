@@ -15,10 +15,13 @@ class DB_connect:
     password = os.getenv('password')
     database = os.getenv('database')
     
+    if host == None or user == None or password == None or database == None:
+        print("the variable does not exist or the key is wrong\n")
+    
     #定義DB 位址
     SQLALCHEMY_DATABASE_URL = f'mysql+pymysql://user:password@host/database' 
     
-    #創建SQLalchmy引擎並連接
+    #創建SQLalchemy引擎並連接
     engine = create_engine(SQLALCHEMY_DATABASE_URL)
     
     #創建資料庫對話

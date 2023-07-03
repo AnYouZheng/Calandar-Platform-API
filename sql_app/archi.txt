@@ -1,0 +1,12 @@
+ Following is the architecture of sql: 
+ .
+ └── sql_app
+    ├── __init__.py    
+    ├── crud.py        
+    ├── database.py    
+    ├── main.py        
+    ├── models.py      
+    └── schemas.py     
+
+ Basically, the function of model.py and schemas.py is nearly similar. 
+ But the difference is: model is the model of sqlalchemy, and the schmas is for pydantic.  
