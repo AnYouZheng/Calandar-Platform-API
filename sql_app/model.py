@@ -16,3 +16,9 @@ class TODO(Base):
     TODO_name   =   Column(String,  unique=True)
     TODO_date   =   Column(Date)
     doneOrNot   =   Column(Boolean)
+    
+#創建 table:ID
+class ID(Base):
+    __tablename__ = 'IDs'
+    act_id = Column(Integer, primary_key=True)
+    todo_id = Column(Integer, primary_key=True)
