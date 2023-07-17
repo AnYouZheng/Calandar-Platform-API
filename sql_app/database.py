@@ -12,11 +12,6 @@ user = os.getenv('user')
 password = os.getenv('password')
 database = os.getenv('database')
 
-print(host)
-print(user)
-print(password)
-print(database)   
-
 # if host == None or user == None or password == None or database == None:
 #     print("the variable does not exist or the key is wrong\n")
 

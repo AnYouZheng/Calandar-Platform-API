@@ -5,11 +5,9 @@ from database import Base
 class activity(Base):
     __tablename__ = 'Activities'
     activity_id   = Column(Integer, primary_key=True)
-    activity_name = Column(String(12), unique=True)
+    activity_name = Column(String(12))
     activity_date = Column(Date)
     activity_describe = Column(String(50), index = True)
-
-    T_id   = Column(Integer)
 
 #創建 table:TODO   
 class TODO(Base):
@@ -19,5 +17,3 @@ class TODO(Base):
     TODO_date   =   Column(Date)
     doneOrNot   =   Column(Boolean, default= False)
     TODO_descripe = Column(String(50), index = True)
-
-    A_id    = Column(Integer)

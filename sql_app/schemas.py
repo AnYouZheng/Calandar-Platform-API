@@ -1,31 +1,34 @@
+from typing import Optional
 from pydantic import BaseModel
+from datetime import date
 
 #Activity
 
 class ActivityBase(BaseModel):
-    id: int
-    title: str
-    description: str | None = None
+    activity_name: str
 
 class ActivityCreate(ActivityBase):
-    pass
-
+    activity_date: date
+    activity_describe: Optional[str] = None
+    
 class Activity(ActivityBase):
-        
+    activity_id: int
+    
     class Config:
         orm_mode = True
+        
 
 #TODO
 
 class TODOBase(BaseModel):
-    title: str
-    describtion: str
+    TODO_name: str
 
 class TODOCreate(TODOBase):
-    pass
-   
+    TODO_date: date
+    TODO_describe: Optional[str] = None
+    
 class TODO(TODOBase):
-    id: int
+    TODO_id: int
     
     class Config:
         orm_mode = True
