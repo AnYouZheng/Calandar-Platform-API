@@ -21,7 +21,6 @@ def get_db():
 @app.post("/activity/", response_model=schemas.Activity)
 def create_Activity(activity: schemas.ActivityCreate, db: Session = Depends(get_db)):
     create= crud.create_activity(db=db, activity=activity)
-    print('already create!')
     return(create)
 
 
@@ -35,9 +34,9 @@ def read_Activity(activity_id: int, db: Session = Depends(get_db)):
 
 @app.post("/Actvities/{activity_id}/TODOs/", response_model=schemas.TODO)
 def create_activity_TODOs(
-    activity_id: int, item: schemas.ItemCreate, db: Session = Depends(get_db)
+    activity_id: int, todo: schemas.TODOCreate, db: Session = Depends(get_db)
 ):
-    return crud.create_activity_TODOs(db=db, item=item, user_id=activity_id)
+    return crud.create_activity_TODOs(db=db, todo= todo, activity_id=activity_id)
 
 
 
