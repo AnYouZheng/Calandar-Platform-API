@@ -18,17 +18,14 @@ def create_activity(db: Session, activity: schemas.ActivityCreate):
     db.refresh(db_activity)
     return db_activity
 
+
 #TODO
 def get_TODO(db: Session, TODO_id: int):
     return db.query(models.TODO).filter(models.TODO.TODO_id == TODO_id).first()
 
 
-def create_TODO(db: Session, TODO: schemas.TODOCreate):
-    db_TODO = models.TODO(
-        TODO_name = TODO.TODO_name,
-        TODO_date = TODO.TODO_date,
-        TODO_describe = TODO.TODO_describe
-    )
+def create_activity_TODOs(db: Session, todo: schemas.TODOCreate, activity_id: int):
+    db_TODO = models.Item(**todo.dict(), A_id=activity_id)
     db.add(db_TODO)
     db.commit()
     db.refresh(db_TODO)

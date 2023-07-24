@@ -29,6 +29,7 @@ class TODOCreate(TODOBase):
     
 class TODO(TODOBase):
     TODO_id: int
+    doneOrNot: bool     #This variable should be: fault
     
     class Config:
         orm_mode = True

@@ -1,4 +1,4 @@
-from sqlalchemy import ForeignKey, Null, Boolean, Column, Date, Integer, String
+from sqlalchemy import Boolean, Column, Date, Integer, String
 from database import Base
 
 #創建 table:activity 
@@ -15,5 +15,6 @@ class TODO(Base):
     TODO_id     =   Column(Integer, primary_key=True)
     TODO_name   =   Column(String(12),  unique=True)
     TODO_date   =   Column(Date)
-    doneOrNot   =   Column(Boolean, default= False)
     TODO_descripe = Column(String(50), index = True)
+    doneOrNot   =   Column(Boolean, default= False)
+    A_id        =   Column(Integer)

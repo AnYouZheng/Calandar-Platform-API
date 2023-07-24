@@ -33,5 +33,21 @@ def read_Activity(activity_id: int, db: Session = Depends(get_db)):
     return db_activity
 
 
+@app.post("/Actvities/{activity_id}/TODOs/", response_model=schemas.TODO)
+def create_activity_TODOs(
+    activity_id: int, item: schemas.ItemCreate, db: Session = Depends(get_db)
+):
+    return crud.create_activity_TODOs(db=db, item=item, user_id=activity_id)
+
+
+
+@app.get("/TODOs/{TODO_id}", response_model=schemas.TODO)
+def read_TODO(TODO_id: int, db: Session = Depends(get_db)):
+    db_TODO = crud.get_TODO(db, TODO_id = TODO_id)
+    if db_TODO is None:
+        raise HTTPException(status_code=404, detail="TODO not found")
+    return db_TODO
+
+
 if __name__ == '__main__' :
     uvicorn.run("main:app")
