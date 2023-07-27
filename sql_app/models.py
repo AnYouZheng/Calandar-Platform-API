@@ -13,7 +13,7 @@ class activity(Base):
 class TODO(Base):
     __tablename__ = 'TODOs'
     TODO_id     =   Column(Integer, primary_key=True)
-    TODO_name   =   Column(String(12),  unique=True)
+    TODO_name   =   Column(String(12))
     TODO_date   =   Column(Date)
     TODO_descripe = Column(String(50), index = True)
     doneOrNot   =   Column(Boolean, default= False)

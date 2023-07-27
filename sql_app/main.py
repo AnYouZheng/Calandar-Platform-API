@@ -39,7 +39,6 @@ def create_activity_TODOs(
     return crud.create_activity_TODOs(db=db, todo= todo, activity_id=activity_id)
 
 
-
 @app.get("/TODOs/{TODO_id}", response_model=schemas.TODO)
 def read_TODO(TODO_id: int, db: Session = Depends(get_db)):
     db_TODO = crud.get_TODO(db, TODO_id = TODO_id)
