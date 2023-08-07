@@ -3,7 +3,6 @@ from datetime import date
 import models, schemas
 
 #Activity
-
 #create
 def create_activity(db: Session, activity: schemas.ActivityCreate):
     db_activity = models.activity(
@@ -38,12 +37,13 @@ def delete_activity(db: Session, activity_id: schemas.Activity):
     db.commit()
     return activity_delete
 
+#-----------------------------------------------------------------------------------------------
 #TODO
 #create
-def create_activity_TODOs(db: Session, todo: schemas.TODOCreate, activity_id: int):
+def create_activity_TODOs(db: Session, todo: schemas.TODOCreate, activityID: int):
     db_TODO = models.TODO(
         TODO_name = todo.TODO_name,
-        A_id=activity_id
+        A_id=activityID
     )
     db.add(db_TODO)
     db.commit()
@@ -55,11 +55,12 @@ def get_TODO(db: Session, TODO_id: int):
     return db.query(models.TODO).filter(models.TODO.TODO_id == TODO_id).first()
 
 #update
-def update_TODO(db: Session, TODO_id: int, name: int, describe: str, date: date):
+def update_TODO(db: Session, TODO_id: int, name: int, describe: str, date: date, Done):
     update_TODO = db.query(models.TODO).filter(models.TODO.TODO_id == TODO_id).first()
     update_TODO.TODO_name = name     
     update_TODO.TODO_describe = describe 
     update_TODO.TODO_date = date
+    update_TODO.doneOrNot = Done
 
     db.commit()
     db.refresh(update_TODO)

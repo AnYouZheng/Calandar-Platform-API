@@ -33,7 +33,7 @@ def read_Activity(activity_id: int, db: Session = Depends(get_db)):
     return (db_activity)
 
 
-@app.update("/Update exsisted activity/", response_model=schemas.Activity)
+@app.put("/Update exsisted activity/", response_model=schemas.Activity)
 def update_Activity(activity_id: int, name: str , describe: str, date: date, db: Session = Depends(get_db)):
     db_activity = crud.get_activity(db, activity_id = activity_id)
     if db_activity is None:
@@ -41,7 +41,8 @@ def update_Activity(activity_id: int, name: str , describe: str, date: date, db:
     activity_update = crud.update_activity(db, activity_id= activity_id, name= name, describe=describe, date=date)
     return (activity_update)
         
-# @app.delete("/Delete activity/", reponse_model=schemas.Activity)
+        
+@app.delete("/Delete Activity/{activity_id}")
 def delete_Activity(activity_id: int, db: Session = Depends(get_db)):
     db_activity = crud.get_activity(db, activity_id = activity_id)
     if db_activity is None:
@@ -51,10 +52,11 @@ def delete_Activity(activity_id: int, db: Session = Depends(get_db)):
     
 
 @app.post("/Create TODO with Activities/{activity_id}/TODOs/", response_model=schemas.TODO)
-def create_activity_TODOs(
-    activity_id: int, todo: schemas.TODOCreate, db: Session = Depends(get_db)
-):
-    return crud.create_activity_TODOs(db=db, todo= todo, activity_id=activity_id)
+def create_activity_TODOs(activityID: int, todo: schemas.TODOCreate, db: Session = Depends(get_db)):
+    TODO_create = crud.get_activity(db, activity_id= activityID)
+    if TODO_create is None:
+        raise HTTPException(status_code=404, detail="Activity is not exist")
+    return crud.create_activity_TODOs(db=db, todo= todo, activityID= activityID)
 
 
 @app.get("/Search TODOs/{TODO_id}", response_model=schemas.TODO)
@@ -65,22 +67,23 @@ def read_TODO(TODO_id: int, db: Session = Depends(get_db)):
     return db_TODO
 
 
-@app.update("/Update exsisted TODO/", response_model=schemas.TODO)
+@app.put("/Update exsisted TODO/", response_model=schemas.TODO)
 def update_TODO(TODO_id: int, name: str , describe: str, date: date, db: Session = Depends(get_db)):
     db_TODO = crud.get_TODO(db, TODO_id = TODO_id)
     if db_TODO is None:
         raise HTTPException(status_code=404, detail="TODO not found")
     TODO_update = crud.update_TODO(db, TODO_id= TODO_id, name= name, describe=describe, date=date)
     return (TODO_update)
+    
         
-@app.delete("/Delete TODO/", reponse_model=schemas.TODO)
+@app.delete("/Delete TODO/{TODO_id}")
 def delete_TODO(TODO_id: int, db: Session = Depends(get_db)):
     db_TODO = crud.get_TODO(db, TODO_id = TODO_id)
     if db_TODO is None:
         raise HTTPException(status_code=404, detail="TODO not found")
     TODO_delete = crud.delete_TODO(db, TODO_id = TODO_id)
     return (TODO_delete)
-   
+
 
 if __name__ == '__main__' :
     uvicorn.run("main:app")
