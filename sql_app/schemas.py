@@ -22,15 +22,14 @@ class Activity(ActivityBase):
 
 class TODOBase(BaseModel):
     TODO_name: str
-    TODO_describe: str | None = None
+    A_id: int
 
 class TODOCreate(TODOBase):
-    pass
+    TODO_date: date
+    TODO_describe: Optional[str] = None
 
 class TODO(TODOBase):
     TODO_id: int
-    A_id: int
-    doneOrNot: bool     #This variable should be: fault
-    
+ 
     class Config:
         orm_mode = True

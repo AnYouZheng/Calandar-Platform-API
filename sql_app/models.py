@@ -16,5 +16,4 @@ class TODO(Base):
     TODO_name   =   Column(String(12))
     TODO_date   =   Column(Date)
     TODO_descripe = Column(String(50), index = True)
-    doneOrNot   =   Column(Boolean, default= False)
     A_id        =   Column(Integer)
